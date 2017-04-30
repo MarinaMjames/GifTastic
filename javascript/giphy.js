@@ -1,30 +1,23 @@
-// create input that pushes to the array 
-// display array buttons including those pushed to it
 // access API
 // display rating
 //display static image
 //on click of image it begins to move
 
 
-// array that holds the preset buttons on screen 
+// array that holds the already defined buttons on screen in the gif-buttons id
 var food = ["bacon", "cheeseburger", "guacamole", "pizza", "chicken+nuggets", "pretzels", "salad", "milkshake"];
 console.log(food);
+
+// Public API Key
 var key = "dc6zaTOxFJmzC";
 
-
-// $("#gif-buttons").click(function(){
-
-
- // Example queryURL for Giphy API
+ // URL that gets called in the ajax function that is requesting info from the Giphy API
     var queryURL = "http://api.giphy.com/v1/gifs/search?q="+food+"&api_key="+key+"&limit=10";
 // ajax function that requests information from the Giphy API
     $.ajax({
       url: queryURL,
       method: "GET"
-    })
-
-
-    .done(function(response) {
+    }).done(function(response) {
       console.log(response);
    
             // Function for displaying movie data
@@ -64,13 +57,18 @@ var key = "dc6zaTOxFJmzC";
       });
 
       // Adding click event listeners to all elements with a class of "movie"
-      $(".gifButton").click(function(){
+      $("#gif-buttons").click(function(){
       
       console.log("Gif Button was clicked!!!!!!!!!!!");
       });
       // Calling the renderButtons function to display the intial buttons
       renderButtons();
 
+// $("food-gifs").prepend();
+
+
+
+
 
  });
-  // });   
+    
