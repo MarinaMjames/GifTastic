@@ -21,50 +21,35 @@ function renderButtons() {
     $("#gif-buttons").append(button);
   }
 
-// On Click function for each gif button that pushes that value into the queryURL variable
+  // On Click function for each gif button that pushes that value into the queryURL variable
 $(".gifButton").click(function(){
-    $("#food-gifs").empty();
-    var gifClicked = $(this).attr("data-name");
-    console.log("Gif Button was clicked! I have a data-name of: " + gifClicked);
-    // URL that gets called in the ajax function that is requesting info from the Giphy API
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + gifClicked + "&api_key=dc6zaTOxFJmzC&limit=10";
-    console.log(queryURL);
-    // ajax function that requests information from the Giphy API
-      $.ajax({
-        url: queryURL,
-        method: "GET"
-      })
+  $("#food-gifs").empty();
+var gifClicked = $(this).attr("data-name");
+console.log("Gif Button was clicked! I have a data-name of: " + gifClicked);
+  // URL that gets called in the ajax function that is requesting info from the Giphy API
+  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+        gifClicked + "&api_key=dc6zaTOxFJmzC&limit=10";
+  console.log(queryURL);
+  // ajax function that requests information from the Giphy API
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).done(function(response) {
+    var gif = response.data;
+      console.log(gif);
 
-      .done(function(response) {
-        var gif = response.data;
-        console.log(gif);
+      for (i = 0; i<gif.length; i++){
+        var gifImg = $("<img>");
 
-          for (i = 0; i<gif.length; i++){
-          var gifImg = $("<img class='gif'>");
+        gifImg.attr({"src": gif[i].images.fixed_height_still.url, "data-state": "still", "data-still": gif[i].images.fixed_height_still.url, });
 
-            gifImg.attr({
-              "src": gif[i].images.original_still.url,
-              "data-state": "still", 
-              "data-still": gif[i].images.original_still.url,
-              "data-animate": gif[i].images.fixed_width.url
-            });
-  $(".gif").on("click", function() {
-    var state = $(this).attr("data-state");
+        var state = $(this).attr("data-state", "animated");
 
-      if (state === "still") {
-        $(this).attr("src", $(this).attr("data-animate"));
-        $(this).attr("data-state", "animate");
-      } else {
-        $(this).attr("src", $(this).attr("data-still"));
-        $(this).attr("data-state", "still");
+        $("#food-gifs").prepend(gifImg);
       }
-  });
-          };
-
-  $("#food-gifs").prepend(gifImg);
-      });
+    });
 });
-};
+}
 renderButtons();
 
 
