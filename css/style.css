@@ -10,6 +10,7 @@ label{
 	background-color: white;
 	width: 30%;
 	font-family: 'News Cycle', sans-serif;
+	margin: 10px;
 }
 p{
 	background-color: white;
@@ -17,6 +18,7 @@ p{
 	font-family: 'News Cycle', sans-serif;
 	font-size: 30px;
 	color: rgb(38,166,154);
+	margin: 10px;
 }
 #gif-input{
 	border-bottom-width: 5px;
@@ -24,5 +26,5 @@ p{
 	background-color: white;
 }
 .btn{
-	margin: 10px;
+	margin: 20px;
 }
