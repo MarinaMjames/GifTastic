@@ -5,10 +5,11 @@ img {
 	height: 200px;
 }
 label{
-	font-size: 30px;
-	color: black;
+	font-size: 50px;
+	color: rgb(38,166,154);
 	background-color: white;
 	width: 30%;
+	font-family: 'News Cycle', sans-serif;
 }
 #gif-input{
 	border-bottom-width: 5px;
