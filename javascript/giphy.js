@@ -1,19 +1,6 @@
 // TO DO LIST: 
-// 1. MAKE INPUT EMPTY AFTER YOU CLICK THE SUBMIT BUTTON
-// 2. FIGURE OUT WHY EVERYOTHER GIF WON'T ANIMATE
-// 3.
-
-
-
-
-
-
-
-
-
-
-
-
+// 2. FIGURE OUT WHY EVERY OTHER GIF WON'T ANIMATE
+// 3. PUESDO CODE MY HTML AND JS
 
 
 
@@ -58,6 +45,10 @@ console.log("Gif Button was clicked! I have a data-name of: " + gifClicked);
       console.log(gif);
 
       for (i = 0; i<gif.length; i++){
+        var p = $("<p>");
+        p.addClass("rating");
+        p.text("Rating: " + gif[i].rating);
+
         var gifImg = $("<img>");
         gifImg.addClass("gif");
 
@@ -65,12 +56,12 @@ console.log("Gif Button was clicked! I have a data-name of: " + gifClicked);
 
         var state = $(this).attr("data-state", "animated");
 
-        $("#food-gifs").prepend(gifImg);
-
+        $("#food-gifs").prepend(p, gifImg);
+// WORKING
         $(".gif").click(function() {
           var state = $(this).attr("data-state");
           console.log(state);
-          if (state === "still") {
+          if (state == "still") {
             $(this).attr("src", $(this).attr("data-animate"));
             $(this).attr("data-state", "animate");
           } else {
@@ -79,50 +70,6 @@ console.log("Gif Button was clicked! I have a data-name of: " + gifClicked);
           }
 
         });
-
-
-// $(".pause").on("click", function() {
-//             var state = $(this).attr("data-state");
-//             if (state == "still") {
-//                 $(this).attr("src", $(this).data("animate"));
-//                 $(this).attr("data-state", "animate");
-//             } else {
-//                 $(this).attr("src", $(this).data("still"));
-//                 $(this).attr("data-state", "still");
-//             }
-//         })
-
-
-
-
-
-
-
-
-
- // $(".gif").on("click", function() {
-
- //    var state = $(this).attr("data-state");
-
- //    if (state === "still") {
- //      var animate = $(this).attr("data-animate");
- //      $(this).attr({
- //        "data-state": "animate",
- //        "src": animate
- //      });
- //    };
-
- //    if (state === "animate") {
- //      var still = $(this).attr("data-still");
- //      $(this).attr({
- //        "data-state": "still",
- //        "src": still
- //      });  
- //    };
- //  });
-
-
-
 
 
       }

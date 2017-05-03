@@ -11,6 +11,13 @@ label{
 	width: 30%;
 	font-family: 'News Cycle', sans-serif;
 }
+p{
+	background-color: white;
+	width: 20%;
+	font-family: 'News Cycle', sans-serif;
+	font-size: 30px;
+	color: rgb(38,166,154);
+}
 #gif-input{
 	border-bottom-width: 5px;
 	width: 60%;
