@@ -136,6 +136,7 @@ renderButtons();
 
 // This function handles events where the add movie button is clicked
 $("#add-button").click(function(){
+
   event.preventDefault();
   console.log("----------------------------------");
   console.log("Add button was clicked!!!!!!");
@@ -144,9 +145,9 @@ $("#add-button").click(function(){
   var gifInput = $("#gif-input").val().trim();
   // The movie from the textbox is then added to our array
   food.push(gifInput);
-
+  $("#gif-input").val("");
   console.log(food);
   renderButtons();
 });
- $("#gif-input").empty();
+
 
