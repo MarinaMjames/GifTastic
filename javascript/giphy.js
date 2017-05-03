@@ -40,17 +40,32 @@ console.log("Gif Button was clicked! I have a data-name of: " + gifClicked);
 
       for (i = 0; i<gif.length; i++){
         var gifImg = $("<img>");
+        gifImg.addClass("gif");
 
-        gifImg.attr({"src": gif[i].images.fixed_height_still.url, "data-state": "still", "data-still": gif[i].images.fixed_height_still.url, });
+        gifImg.attr({"src": gif[i].images.original_still.url, "data-state": "still", "data-still": gif[i].images.original_still.url, "data-animate": gif[i].images.original.url });
 
         var state = $(this).attr("data-state", "animated");
 
         $("#food-gifs").prepend(gifImg);
+
+        $(".gif").click(function() {
+          var state = $(this).attr("data-state");
+          console.log(state);
+          if (state === "still") {
+            $(this).attr("src", $(this).attr("data-animate"));
+            $(this).attr("data-state", "animate");
+          } else {
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "still");
+          }
+
+        });
       }
     });
 });
 }
 renderButtons();
+
 
 
 
