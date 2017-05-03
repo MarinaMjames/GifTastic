@@ -1,3 +1,22 @@
+// TO DO LIST: 
+// 1. MAKE INPUT EMPTY AFTER YOU CLICK THE SUBMIT BUTTON
+// 2. FIGURE OUT WHY EVERYOTHER GIF WON'T ANIMATE
+// 3.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // array that holds the already defined buttons on screen in the gif-buttons id
 var food = ["Bacon", "Burritos", "Guacamole", "Grilled Cheese", "Pizza", "Pancakes"];
 console.log(food);

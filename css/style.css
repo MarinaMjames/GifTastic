@@ -4,6 +4,17 @@ body{
 img {
 	height: 200px;
 }
-button{
+label{
+	font-size: 30px;
+	color: black;
+	background-color: white;
+	width: 30%;
+}
+#gif-input{
+	border-bottom-width: 5px;
+	width: 60%;
+	background-color: white;
+}
+.btn{
 	margin: 10px;
 }
