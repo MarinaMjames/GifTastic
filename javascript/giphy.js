@@ -10,7 +10,7 @@ function renderButtons() {
   // Loops through the array of pre-defined food variable
   for (var i = 0; i < food.length; i++) {
     // Generates buttons for each food in the food variable array
-    var button = $("<button>");
+    var button = $("<button class='waves-effect waves-light btn'>");
     // Adds a class of gifButton to our buttons
     button.addClass("gifButton");
     // Added a data-attribute
@@ -60,6 +60,26 @@ console.log("Gif Button was clicked! I have a data-name of: " + gifClicked);
           }
 
         });
+
+
+// $(".pause").on("click", function() {
+//             var state = $(this).attr("data-state");
+//             if (state == "still") {
+//                 $(this).attr("src", $(this).data("animate"));
+//                 $(this).attr("data-state", "animate");
+//             } else {
+//                 $(this).attr("src", $(this).data("still"));
+//                 $(this).attr("data-state", "still");
+//             }
+//         })
+
+
+
+
+
+
+
+
 
  // $(".gif").on("click", function() {
 
