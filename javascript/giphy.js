@@ -18,7 +18,7 @@
 
 
 // array that holds the already defined buttons on screen in the gif-buttons id
-var food = ["Bacon", "Burritos", "Guacamole", "Grilled Cheese", "Pizza", "Pancakes"];
+var food = ["Bacon", "Burritos", "Guacamole", "Grilled Cheese", "Pizza", "Pancakes", "Donuts", "Ice Cream", "Waffles", "Carrot"];
 console.log(food);
 
 
@@ -148,5 +148,5 @@ $("#add-button").click(function(){
   console.log(food);
   renderButtons();
 });
-
+ $("#gif-input").empty();
 
