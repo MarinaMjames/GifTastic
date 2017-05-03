@@ -60,6 +60,32 @@ console.log("Gif Button was clicked! I have a data-name of: " + gifClicked);
           }
 
         });
+
+ // $(".gif").on("click", function() {
+
+ //    var state = $(this).attr("data-state");
+
+ //    if (state === "still") {
+ //      var animate = $(this).attr("data-animate");
+ //      $(this).attr({
+ //        "data-state": "animate",
+ //        "src": animate
+ //      });
+ //    };
+
+ //    if (state === "animate") {
+ //      var still = $(this).attr("data-still");
+ //      $(this).attr({
+ //        "data-state": "still",
+ //        "src": still
+ //      });  
+ //    };
+ //  });
+
+
+
+
+
       }
     });
 });
