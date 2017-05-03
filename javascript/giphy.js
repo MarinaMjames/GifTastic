@@ -44,7 +44,7 @@ console.log("Gif Button was clicked! I have a data-name of: " + gifClicked);
     var gif = response.data;
       console.log(gif);
 
-      for (i = 0; i<gif.length; i++){
+      for (i = 0; i < gif.length; i++){
         var p = $("<p>");
         p.addClass("rating");
         p.text("Rating: " + gif[i].rating);
@@ -59,28 +59,36 @@ console.log("Gif Button was clicked! I have a data-name of: " + gifClicked);
         $("#food-gifs").prepend(p, gifImg);
 // WORKING
         $(".gif").click(function() {
+        
           var state = $(this).attr("data-state");
           console.log(state);
-          if (state == "still") {
+          if (state === "still") {
             $(this).attr("src", $(this).attr("data-animate"));
             $(this).attr("data-state", "animate");
-          } else {
-            $(this).attr("src", $(this).attr("data-still"));
-            $(this).attr("data-state", "still");
+            console.log(state);
+          } 
+          else {
           }
 
         });
-
-
+// $(".gif").click(function(){
+// console.log("IMAGE WAS CLICKED!!!!");
+// switch ("data-state"){
+//           case ("data-state" === "still"): 
+//           var dataAnimate = $(this).attr("data-animate");
+//           $(this).attr({"src": dataAnimate, "data-state": "animate"});
+//           break;
+//           case ("data-state" === "animate"):
+//           var dataStill = $(this).attr("data-still");
+//           $(this).attr({"src": dataStill, "data-state": "still"});
+//           break;
+//         }
+// }); 
       }
     });
 });
 }
 renderButtons();
-
-
-
-
 // This function handles events where the add movie button is clicked
 $("#add-button").click(function(){
 
