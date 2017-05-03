@@ -1,9 +1,3 @@
-// TO DO LIST: 
-// 2. FIGURE OUT WHY EVERY OTHER GIF WON'T ANIMATE
-// 3. PUESDO CODE MY HTML AND JS
-
-
-
 // array that holds the already defined buttons on screen in the gif-buttons id
 var food = ["Bacon", "Burritos", "Guacamole", "Grilled Cheese", "Pizza", "Pancakes", "Donuts", "Ice Cream", "Waffles", "Carrot"];
 console.log(food);
@@ -27,82 +21,84 @@ function renderButtons() {
     $("#gif-buttons").append(button);
   }
 
-  // On Click function for each gif button that pushes that value into the queryURL variable
+// On Click function for each gif button that pushes that value into the queryURL variable
 $(".gifButton").click(function(){
+  // empties the div with id food-gifs so that only those of the button clicked are shown
   $("#food-gifs").empty();
+
+// stored the data-name in the variable gifClicked
 var gifClicked = $(this).attr("data-name");
-console.log("Gif Button was clicked! I have a data-name of: " + gifClicked);
+// console.log("Gif Button was clicked! I have a data-name of: " + gifClicked);
   // URL that gets called in the ajax function that is requesting info from the Giphy API
   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
         gifClicked + "&api_key=dc6zaTOxFJmzC&limit=10";
-  console.log(queryURL);
+  // console.log(queryURL);
   // ajax function that requests information from the Giphy API
   $.ajax({
     url: queryURL,
     method: "GET"
-  }).done(function(response) {
+  })
+// once response is given from the giphy API do all this stuff: 
+  .done(function(response) {
+    // get the data from response and store it in variable gif
     var gif = response.data;
-      console.log(gif);
-
+      // console.log(gif);
+// loop through the gif reponse data
       for (i = 0; i < gif.length; i++){
+        // create p tag
         var p = $("<p>");
+        //add class of rating to p tags
         p.addClass("rating");
+        // add text to p tag of Rating: and the rating from the gif responses
         p.text("Rating: " + gif[i].rating);
-
+        // store img tag in variable gifImg
         var gifImg = $("<img>");
-        gifImg.addClass("gif");
 
-        gifImg.attr({"src": gif[i].images.original_still.url, "data-state": "still", "data-still": gif[i].images.original_still.url, "data-animate": gif[i].images.original.url });
-
+// set src, data-state, data-still, data-animate to the gif images
+        gifImg.attr({"src": gif[i].images.fixed_height_still.url, "data-state": "still", "data-still": gif[i].images.fixed_height_still.url, "data-animate": gif[i].images.fixed_height.url });
+// create variable state that stores the data-state
         var state = $(this).attr("data-state", "animated");
-
+// put the p tag information and gifimg information into the div with id food-gifs
         $("#food-gifs").prepend(p, gifImg);
-// WORKING
-        $(".gif").click(function() {
-        
+// when you click gifImg - any image responses from the giphy API 
+        $(gifImg).click(function() {
+          // get the data-state of the one that was clicked
           var state = $(this).attr("data-state");
-          console.log(state);
-          if (state === "still") {
-            $(this).attr("src", $(this).attr("data-animate"));
-            $(this).attr("data-state", "animate");
-            console.log(state);
-          } 
-          else {
-          }
-
+          // if data-state is still then change it to data animate and change url 
+            if (state === "still") {
+              $(this).attr("src", $(this).attr("data-animate"));
+              $(this).attr("data-state", "animate");
+              // if state is animate then change it to data still and change url
+            } else {
+              $(this).attr("src", $(this).attr("data-still"));
+              $(this).attr("data-state", "still");
+            }
         });
-// $(".gif").click(function(){
-// console.log("IMAGE WAS CLICKED!!!!");
-// switch ("data-state"){
-//           case ("data-state" === "still"): 
-//           var dataAnimate = $(this).attr("data-animate");
-//           $(this).attr({"src": dataAnimate, "data-state": "animate"});
-//           break;
-//           case ("data-state" === "animate"):
-//           var dataStill = $(this).attr("data-still");
-//           $(this).attr({"src": dataStill, "data-state": "still"});
-//           break;
-//         }
-// }); 
-      }
-    });
-});
-}
-renderButtons();
-// This function handles events where the add movie button is clicked
-$("#add-button").click(function(){
+      };
 
+      });
+
+});
+};
+// call render buttons function
+renderButtons();
+// On click for when the submit button is clicked
+$("#add-button").click(function(){
+// allows you to hit enter to submit 
   event.preventDefault();
-  console.log("----------------------------------");
-  console.log("Add button was clicked!!!!!!");
-  console.log("-----------------------------------");
+  // console.log("----------------------------------");
+  // console.log("Add button was clicked!!!!!!");
+  // console.log("-----------------------------------");
   // This line of code will grab the input from the textbox
   var gifInput = $("#gif-input").val().trim();
-  // The movie from the textbox is then added to our array
+  // The input is added to the original array
   food.push(gifInput);
+  // clears the input fields value
   $("#gif-input").val("");
-  console.log(food);
+  // console.log(food);
+  // calls the render buttons function
   renderButtons();
 });
+
 
 
